@@ -1,3 +1,38 @@
-<div>
-    我的调班
+<!--  我的调班  -->
+
+<div class="mine_list">
+    <header class="header-bar header-bar-nav">
+        <a v-link="{path:'/mine'}" style="height: 44px; line-height: 44px;"><i class="iconfont icon-fanhui header-icon"></i></a>
+        <h1 class="header-title">我的调班</h1>
+        <a v-link="{path:'/mine/apply'}" class="weui-icon pull-right">申请调班</a>
+    </header>
+
+    <div class="container padder-top">
+        <div class="bd">
+            <div class="weui_panel weui_panel_access">
+                <div class="weui_panel_bd">
+
+                    <div class="weui_media_box weui_media_text">
+                        <div class="weui_media_bd" style="float: left;">
+                            <div>
+                                <p>2016-06-06</p>
+                                <p>早班 王师傅</p>
+                            </div>
+                            <div></div>
+                            <div>
+                                <p>2016-06-06</p>
+                                <p>晚班 姚师傅</p>
+                            </div>
+                        </div>
+                        <div class="weui_cell_ft">
+                            <p>06-06 15:30</p>
+                            <p>已审核</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
 </div>
