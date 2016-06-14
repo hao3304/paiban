@@ -5,7 +5,26 @@
         <a v-link="{path:'/mine/list'}" style="height: 44px; line-height: 44px;"><i class="iconfont icon-fanhui header-icon"></i></a>
         <h1 class="header-title">申请调班</h1>
     </header>
-
+    <div  class="weui_loading_toast" v-show="loading">
+        <div class="weui_mask_transparent"></div>
+        <div class="weui_toast">
+            <div class="weui_loading">
+                <div class="weui_loading_leaf weui_loading_leaf_0"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_1"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_2"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_3"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_4"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_5"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_6"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_7"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_8"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_9"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_10"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_11"></div>
+            </div>
+            <p class="weui_toast_content">数据加载中</p>
+        </div>
+    </div>
     <div class="container padder-top">
         <div class="bd">
             <div class="weui_cells_title">我的班次</div>
@@ -14,7 +33,7 @@
                 <div class="weui_cell">
                     <div class="weui_cell_hd"><label class="weui_label">调班人员</label></div>
                     <div class="weui_cell_bd weui_cell_primary">
-                        <span>王师傅</span>
+                        <span>{{form.from_nm}}</span>
                     </div>
                 </div>
 
@@ -23,10 +42,9 @@
                         <label for="" class="weui_label">调班时间</label>
                     </div>
                     <div class="weui_cell_bd weui_cell_primary">
-                        <select class="weui_select" name="select2">
-                            <option value="1">选择时间</option>
-
-                        </select>
+                        <div class="weui_select" @click="onPickDate('fromDate')" >
+                            {{fromDate||'选择时间'}}
+                        </div>
                     </div>
                 </div>
 
@@ -35,10 +53,10 @@
                         <label for="" class="weui_label">调班班次</label>
                     </div>
                     <div class="weui_cell_bd weui_cell_primary">
-                        <select class="weui_select" name="select2">
-                            <option value="1">早班</option>
-                            <option value="2">晚班</option>
-                            <option value="3">夜班</option>
+                        <select class="weui_select" v-model="form.from_duty" >
+                            <option value="z">早班</option>
+                            <option value="w">晚班</option>
+                            <option value="y">夜班</option>
                         </select>
                     </div>
                 </div>
@@ -46,45 +64,27 @@
                 <div class="weui_cell">
                     <div class="weui_cell_hd"><label class="weui_label">调班原因</label></div>
                     <div class="weui_cell_bd weui_cell_primary">
-                        <input class="weui_input" type="number" pattern="[0-9]*" placeholder="请输入原因">
+                        <input class="weui_input" type="text" v-model="form.remark" placeholder="请输入原因">
                     </div>
                 </div>
 
             </div>
 
             <div class="weui_cells_title">被调人班次</div>
-            <div class="weui_cells weui_cells_checkbox apply_noborder">
-                <label class="weui_cell weui_check_label pull-left" for="s11" style="margin-right: 20px;">
-                    <div class="weui_cell_hd">
-                        <input type="checkbox" class="weui_check" name="checkbox1" id="s11" checked="checked">
-                        <i class="weui_icon_checked"></i>
+            <div class="weui_cells weui_cells_form">
+                <div class="weui_cell weui_cell_switch">
+                    <div class="weui_cell_hd weui_cell_primary">是否指定人</div>
+                    <div class="weui_cell_ft">
+                        <input class="weui_switch" type="checkbox" v-model="appoint">
                     </div>
-                    <div class="weui_cell_bd weui_cell_primary">
-                        <p>指定人</p>
-                    </div>
-                </label>
-                <label class="weui_cell weui_check_label pull-left apply_noborder" for="s12">
-                    <div class="weui_cell_hd">
-                        <input type="checkbox" name="checkbox1" class="weui_check" id="s12">
-                        <i class="weui_icon_checked"></i>
-                    </div>
-                    <div class="weui_cell_bd weui_cell_primary">
-                        <p>不指定</p>
-                    </div>
-                </label>
+                </div>
             </div>
 
-            <div class="weui_cells weui_cells_form">
-                <div class="weui_cell weui_cell_select weui_select_after">
-                    <div class="weui_cell_hd">
-                        <label for="" class="weui_label">调班人员</label>
-                    </div>
+            <div class="weui_cells weui_cells_form" v-show="appoint">
+                <div class="weui_cell" v-show="form.to_id">
+                    <div class="weui_cell_hd"><label class="weui_label">调班人员</label></div>
                     <div class="weui_cell_bd weui_cell_primary">
-                        <select class="weui_select" name="select2">
-                            <option value="1">王师傅</option>
-                            <option value="2">李师傅</option>
-                            <option value="3">姚师傅</option>
-                        </select>
+                        <span>{{form.to_nm}}</span>
                     </div>
                 </div>
 
@@ -93,22 +93,21 @@
                         <label for="" class="weui_label">调班时间</label>
                     </div>
                     <div class="weui_cell_bd weui_cell_primary">
-                        <select class="weui_select" name="select2">
-                            <option value="1">请选择时间</option>
-
-                        </select>
+                        <div class="weui_select" @click="onPickDate('toDate')" >
+                            {{toDate||'选择时间'}}
+                        </div>
                     </div>
                 </div>
 
                 <div class="weui_cell weui_cell_select weui_select_after">
                     <div class="weui_cell_hd">
-                        <label for="" class="weui_label">调班班次</label>
+                        <label class="weui_label">调班班次</label>
                     </div>
                     <div class="weui_cell_bd weui_cell_primary">
-                        <select class="weui_select" name="select2">
-                            <option value="1">早班</option>
-                            <option value="2">晚班</option>
-                            <option value="3">夜班</option>
+                        <select class="weui_select" v-model="form.to_duty">
+                            <option value="z">早班</option>
+                            <option value="w">晚班</option>
+                            <option value="y">夜班</option>
                         </select>
                     </div>
                 </div>
@@ -116,7 +115,7 @@
             </div>
 
             <div class="weui_btn_area">
-                <a class="weui_btn weui_btn_primary" href="javascript:" id="showTooltips">提交</a>
+                <a class="weui_btn weui_btn_primary" href="javascript:" @click="onSubmit" id="showTooltips">提交</a>
             </div>
 
         </div>

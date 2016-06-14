@@ -60,8 +60,28 @@ function myList(p,c){
     $.post(prefix+"/hd/sche/list.json",p,co(c),"json");
 }
 
+/**
+ * 获取人员信息
+ * @param p
+ * @param c
+ */
+function getInfo(p,c){
+    $.post(prefix+"/hd/token/info.json",p,co(c),"json");
+}
+
+/**
+ * 调班信息保存接口
+ * @param p   action 1:申请调班 2: 审批调班 3:拒绝调班
+ * @param c
+ */
+function save(p,c){
+    $.post(prefix+"/hd/sche/save.json",p,co(c),"json");
+}
+
 module.exports = {
     GetQueryString:GetQueryString,
     dutylist:dutylist,
-    myList:myList
+    myList:myList,
+    getInfo:getInfo,
+    save:save
 };

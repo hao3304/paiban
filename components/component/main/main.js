@@ -11,7 +11,16 @@ Vue.use(Router);
 
 
 router = new Router();
-var App = Vue.extend({});
+var App = Vue.extend({
+    data: function () {
+        return {
+            token:"575fa1c89b4037c30f55b526"
+        }
+    },
+    ready: function () {
+
+    }
+});
 
 
 router.redirect({
@@ -44,3 +53,61 @@ router.map({
 
 router.start(App,'#app');
 
+
+Vue.filter("getWeek", function (w) {
+    var d = new Date(w*1000);
+    switch (d.getDay()){
+        case 0:{
+            return "星期日";
+        }break;
+        case 1:{
+            return "星期一";
+        }break;
+        case 2:{
+            return "星期二";
+        }break;
+        case 3:{
+            return "星期三";
+        }break;
+        case 4:{
+            return "星期四";
+        }break;
+        case 5:{
+            return "星期五";
+        }break;
+        case 6:{
+            return "星期六";
+        }break;
+    }
+});
+
+Vue.filter("getWork", function (v) {
+
+    switch (v){
+        case "w":{
+            return "晚班";
+        }break;
+        case "z":{
+            return "早班";
+        }break;
+        case "y":{
+            return "夜班";
+        }
+    }
+
+});
+
+Vue.filter("getState", function (v) {
+
+    switch (parseInt(v)){
+        case 0:{
+            return "未审核";
+        }break;
+        case 1:{
+            return "已审核";
+        }break;
+        case 2:{
+            return "未通过";
+        }break;
+    }
+});

@@ -1,77 +1,56 @@
 <!--  我的调班  -->
 
 <div class="mine_list">
+
     <header class="header-bar header-bar-nav">
-        <a v-link="{path:'/mine'}" style="height: 44px; line-height: 44px;"><i class="iconfont icon-fanhui header-icon"></i></a>
+        <a class="pull-left" v-link="{path:'/mine'}" style="height: 44px; line-height: 44px;"><i class="iconfont icon-fanhui header-icon"></i></a>
         <h1 class="header-title">我的调班</h1>
         <a v-link="{path:'/mine/apply'}" class="weui-icon pull-right">申请调班</a>
     </header>
 
+    <div  class="weui_loading_toast" v-show="loading">
+        <div class="weui_mask_transparent"></div>
+        <div class="weui_toast">
+            <div class="weui_loading">
+                <div class="weui_loading_leaf weui_loading_leaf_0"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_1"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_2"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_3"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_4"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_5"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_6"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_7"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_8"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_9"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_10"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_11"></div>
+            </div>
+            <p class="weui_toast_content">数据加载中</p>
+        </div>
+    </div>
     <div class="container padder-top">
         <div class="bd">
             <div class="weui_panel weui_panel_access">
                 <div class="weui_panel_bd">
 
-                    <div class="weui_media_box weui_media_text">
+                    <div class="weui_media_box weui_media_text" v-for="l in list">
                         <div class="weui_media_bd">
                             <div class="pull-left">
-                                <p>2016-06-06</p>
-                                <p>早班 - 王师傅</p>
+                                <p>{{new Date(l.from_date*1000).Format("yyyy-MM-dd")}}</p>
+                                <p>{{l.from_duty|getWork }} - {{l.from_nm}}</p>
                             </div>
                             <div class="pull-left mine_shift">
                                 <p>调班</p>
                                 <i class="iconfont icon-diaoban" style="font-size: 20px;"></i>
                             </div>
-                            <div class="pull-left">
-                                <p>2016-06-06</p>
-                                <p>晚班 - 姚师傅</p>
+                            <div class="pull-left" v-if="l.appoint ==1">
+                                <p>{{new Date(l.to_date*1000).Format("yyyy-MM-dd")}}</p>
+                                <p>{{l.to_duty|getWork }} - {{l.to_nm}}</p>
                             </div>
                         </div>
                         <div class="weui_cell_ft">
                             <p>15:30</p>
-                            <p class="checked">已审核</p>
-                        </div>
-                    </div>
-
-                    <div class="weui_media_box weui_media_text">
-                        <div class="weui_media_bd">
-                            <div class="pull-left">
-                                <p>2016-06-06</p>
-                                <p>早班 - 王师傅</p>
-                            </div>
-                            <div class="pull-left mine_shift">
-                                <p>调班</p>
-                                <i class="iconfont icon-diaoban" style="font-size: 20px;"></i>
-                            </div>
-                            <div class="pull-left">
-                                <p>2016-06-06</p>
-                                <p>晚班 - 姚师傅</p>
-                            </div>
-                        </div>
-                        <div class="weui_cell_ft">
-                            <p>15:30</p>
-                            <p>未审核</p>
-                        </div>
-                    </div>
-
-                    <div class="weui_media_box weui_media_text">
-                        <div class="weui_media_bd">
-                            <div class="pull-left">
-                                <p>2016-06-06</p>
-                                <p>早班 - 王师傅</p>
-                            </div>
-                            <div class="pull-left mine_shift">
-                                <p>调班</p>
-                                <i class="iconfont icon-diaoban" style="font-size: 20px;"></i>
-                            </div>
-                            <div class="pull-left">
-                                <p>2016-06-06</p>
-                                <p>晚班 - 姚师傅</p>
-                            </div>
-                        </div>
-                        <div class="weui_cell_ft">
-                            <p>15:30</p>
-                            <p class="no_passed">未通过</p>
+                            <p class="checked">{{l.zt | getState}}</p>
                         </div>
                     </div>
 

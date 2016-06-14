@@ -12,8 +12,8 @@
   backface-visibility: hidden;
 }
 .header-bar .header-title {
-  right: 40px;
-  left: 40px;
+  right: 80px;
+  left: 80px;
   display: inline-block;
   overflow: hidden;
   width: auto;

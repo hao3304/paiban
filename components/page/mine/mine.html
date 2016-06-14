@@ -6,131 +6,55 @@
         <h1 class="header-title">我的排班</h1>
         <a v-link="{path:'/mine/list'}" class="weui-icon iconfont icon-diaoban pull-right">调班</a>
     </header>
-
+    <div  class="weui_loading_toast" v-show="loading">
+        <div class="weui_mask_transparent"></div>
+        <div class="weui_toast">
+            <div class="weui_loading">
+                <div class="weui_loading_leaf weui_loading_leaf_0"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_1"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_2"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_3"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_4"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_5"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_6"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_7"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_8"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_9"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_10"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_11"></div>
+            </div>
+            <p class="weui_toast_content">数据加载中</p>
+        </div>
+    </div>
     <div class="container padder-top">
         <div class="bd">
             <div class="weui_grids">
-                <a href="#" class="weui_grid">
+                <a href="javascript:;" class="weui_grid" v-for="l in list">
                     <div class="mine_box">
-                        <p class="mine_box_title">星期一 06-06</p>
+                        <p class="mine_box_title">{{l.date | getWeek}} {{new Date(l.date*1000).Format("MM-dd")}}</p>
                         <ul>
-                            <li><span class="fontstyle">早班</span>姚师傅</li>
-                            <li><span class="fontstyle">晚班</span>李师傅</li>
-                            <li><span class="fontstyle">夜班</span>王师傅</li>
+                            <li v-if="l['z']"><span class="fontstyle">早班</span>{{l['z'].unm}}</li>
+                            <li v-if="l['w']"><span class="fontstyle">晚班</span>{{l['w'].unm}}</li>
+                            <li v-if="l['y']"><span class="fontstyle">夜班</span>{{l['y'].unm}}</li>
                         </ul>
                     </div>
                 </a>
-
-                <a href="#" class="weui_grid">
-                    <div class="mine_box">
-                        <p class="mine_box_title">星期一 06-06</p>
-                        <ul>
-                            <li><span class="fontstyle">早班</span>姚师傅</li>
-                            <li><span class="fontstyle">晚班</span>李师傅</li>
-                            <li><span class="fontstyle">夜班</span>王师傅</li>
-                        </ul>
-                    </div>
-                </a>
-
-                <a href="#" class="weui_grid">
-                    <div class="mine_box">
-                        <p class="mine_box_title">星期一 06-06</p>
-                        <ul>
-                            <li><span class="fontstyle">早班</span>姚师傅</li>
-                            <li><span class="fontstyle">晚班</span>李师傅</li>
-                            <li><span class="fontstyle">夜班</span>王师傅</li>
-                        </ul>
-                    </div>
-                </a>
-
-                <a href="#" class="weui_grid">
-                    <div class="mine_box">
-                        <p class="mine_box_title">星期一 06-06</p>
-                        <ul>
-                            <li><span class="fontstyle">早班</span>姚师傅</li>
-                            <li><span class="fontstyle">晚班</span>李师傅</li>
-                            <li><span class="fontstyle">夜班</span>王师傅</li>
-                        </ul>
-                    </div>
-                </a>
-
-                <a href="#" class="weui_grid">
-                    <div class="mine_box">
-                        <p class="mine_box_title">星期一 06-06</p>
-                        <ul>
-                            <li><span class="fontstyle">早班</span>姚师傅</li>
-                            <li><span class="fontstyle">晚班</span>李师傅</li>
-                            <li><span class="fontstyle">夜班</span>王师傅</li>
-                        </ul>
-                    </div>
-                </a>
-
-                <a href="#" class="weui_grid">
-                    <div class="mine_box">
-                        <p class="mine_box_title">星期一 06-06</p>
-                        <ul>
-                            <li><span class="fontstyle">早班</span>姚师傅</li>
-                            <li><span class="fontstyle">晚班</span>李师傅</li>
-                            <li><span class="fontstyle">夜班</span>王师傅</li>
-                        </ul>
-                    </div>
-                </a>
-
-                <a href="#" class="weui_grid">
-                    <div class="mine_box">
-                        <p class="mine_box_title">星期一 06-06</p>
-                        <ul>
-                            <li><span class="fontstyle">早班</span>姚师傅</li>
-                            <li><span class="fontstyle">晚班</span>李师傅</li>
-                            <li><span class="fontstyle">夜班</span>王师傅</li>
-                        </ul>
-                    </div>
-                </a>
-
-                <a href="#" class="weui_grid">
-                    <div class="mine_box">
-                        <p class="mine_box_title">星期一 06-06</p>
-                        <ul>
-                            <li><span class="fontstyle">早班</span>姚师傅</li>
-                            <li><span class="fontstyle">晚班</span>李师傅</li>
-                            <li><span class="fontstyle">夜班</span>王师傅</li>
-                        </ul>
-                    </div>
-                </a>
-
-                <a href="#" class="weui_grid">
-                    <div class="mine_box">
-                        <p class="mine_box_title">星期一 06-06</p>
-                        <ul>
-                            <li><span class="fontstyle">早班</span>姚师傅</li>
-                            <li><span class="fontstyle">晚班</span>李师傅</li>
-                            <li><span class="fontstyle">夜班</span>王师傅</li>
-                        </ul>
-                    </div>
-                </a>
-
-
-            </div>
-
-
-            <div class="weui_tabbar">
-
-                <div class="last_page">
-                    <a href="javascript:;" class="weui_btn weui_btn_default">上一页</a>
-                </div>
-                <div class="next_page">
-                    <a href="javascript:;" class="weui_btn weui_btn_primary">下一页</a>
-                </div>
-
             </div>
 
         </div>
 
-
-
     </div>
 
+    <!--<div class="weui_tabbar">-->
 
+    <!--<div class="last_page">-->
+    <!--<a href="javascript:;" class="weui_btn weui_btn_default">上一页</a>-->
+    <!--</div>-->
+    <!--<div class="next_page">-->
+    <!--<a href="javascript:;" class="weui_btn weui_btn_primary">下一页</a>-->
+    <!--</div>-->
+
+    <!--</div>-->
 
 
 </div>
