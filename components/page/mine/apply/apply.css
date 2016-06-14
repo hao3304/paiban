@@ -1,0 +1,12 @@
+.apply .weui_btn_area .weui_btn_primary {
+  background: #029de0;
+}
+.apply .weui_cells_checkbox .weui_check:checked + .weui_icon_checked:before {
+  color: #029de0;
+}
+.apply .apply_noborder:before {
+  border-top: none;
+}
+.apply .apply_noborder:after {
+  border-bottom: none;
+}

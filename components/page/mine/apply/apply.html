@@ -1,5 +1,126 @@
 <!--  申请调班  -->
 
-<div>
-    申请调班
+<div class="apply">
+    <header class="header-bar header-bar-nav">
+        <a v-link="{path:'/mine/list'}" style="height: 44px; line-height: 44px;"><i class="iconfont icon-fanhui header-icon"></i></a>
+        <h1 class="header-title">申请调班</h1>
+    </header>
+
+    <div class="container padder-top">
+        <div class="bd">
+            <div class="weui_cells_title">我的班次</div>
+
+            <div class="weui_cells weui_cells_form">
+                <div class="weui_cell">
+                    <div class="weui_cell_hd"><label class="weui_label">调班人员</label></div>
+                    <div class="weui_cell_bd weui_cell_primary">
+                        <span>王师傅</span>
+                    </div>
+                </div>
+
+                <div class="weui_cell weui_cell_select weui_select_after">
+                    <div class="weui_cell_hd">
+                        <label for="" class="weui_label">调班时间</label>
+                    </div>
+                    <div class="weui_cell_bd weui_cell_primary">
+                        <select class="weui_select" name="select2">
+                            <option value="1">选择时间</option>
+
+                        </select>
+                    </div>
+                </div>
+
+                <div class="weui_cell weui_cell_select weui_select_after">
+                    <div class="weui_cell_hd">
+                        <label for="" class="weui_label">调班班次</label>
+                    </div>
+                    <div class="weui_cell_bd weui_cell_primary">
+                        <select class="weui_select" name="select2">
+                            <option value="1">早班</option>
+                            <option value="2">晚班</option>
+                            <option value="3">夜班</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="weui_cell">
+                    <div class="weui_cell_hd"><label class="weui_label">调班原因</label></div>
+                    <div class="weui_cell_bd weui_cell_primary">
+                        <input class="weui_input" type="number" pattern="[0-9]*" placeholder="请输入原因">
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="weui_cells_title">被调人班次</div>
+            <div class="weui_cells weui_cells_checkbox apply_noborder">
+                <label class="weui_cell weui_check_label pull-left" for="s11" style="margin-right: 20px;">
+                    <div class="weui_cell_hd">
+                        <input type="checkbox" class="weui_check" name="checkbox1" id="s11" checked="checked">
+                        <i class="weui_icon_checked"></i>
+                    </div>
+                    <div class="weui_cell_bd weui_cell_primary">
+                        <p>指定人</p>
+                    </div>
+                </label>
+                <label class="weui_cell weui_check_label pull-left apply_noborder" for="s12">
+                    <div class="weui_cell_hd">
+                        <input type="checkbox" name="checkbox1" class="weui_check" id="s12">
+                        <i class="weui_icon_checked"></i>
+                    </div>
+                    <div class="weui_cell_bd weui_cell_primary">
+                        <p>不指定</p>
+                    </div>
+                </label>
+            </div>
+
+            <div class="weui_cells weui_cells_form">
+                <div class="weui_cell weui_cell_select weui_select_after">
+                    <div class="weui_cell_hd">
+                        <label for="" class="weui_label">调班人员</label>
+                    </div>
+                    <div class="weui_cell_bd weui_cell_primary">
+                        <select class="weui_select" name="select2">
+                            <option value="1">王师傅</option>
+                            <option value="2">李师傅</option>
+                            <option value="3">姚师傅</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="weui_cell weui_cell_select weui_select_after">
+                    <div class="weui_cell_hd">
+                        <label for="" class="weui_label">调班时间</label>
+                    </div>
+                    <div class="weui_cell_bd weui_cell_primary">
+                        <select class="weui_select" name="select2">
+                            <option value="1">请选择时间</option>
+
+                        </select>
+                    </div>
+                </div>
+
+                <div class="weui_cell weui_cell_select weui_select_after">
+                    <div class="weui_cell_hd">
+                        <label for="" class="weui_label">调班班次</label>
+                    </div>
+                    <div class="weui_cell_bd weui_cell_primary">
+                        <select class="weui_select" name="select2">
+                            <option value="1">早班</option>
+                            <option value="2">晚班</option>
+                            <option value="3">夜班</option>
+                        </select>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="weui_btn_area">
+                <a class="weui_btn weui_btn_primary" href="javascript:" id="showTooltips">提交</a>
+            </div>
+
+        </div>
+
+    </div>
+
 </div>

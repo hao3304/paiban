@@ -1,0 +1,13 @@
+.mine_list .mine_shift {
+  margin: 0px 10px 0px 10px;
+  padding-top: 13px;
+  text-align: center;
+  line-height: 14px;
+  color: #029de0;
+}
+.mine_list .checked {
+  color: #029de0;
+}
+.mine_list .no_passed {
+  color: #dc0505;
+}
