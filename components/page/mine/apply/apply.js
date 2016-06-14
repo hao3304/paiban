@@ -145,6 +145,22 @@ module.exports = Vue.extend({
             }
         }
     },
+    route:{
+        data: function () {
+            $.extend(this.form,{
+                "from_id":"",
+                "from_nm":"",
+                "from_date":"",
+                "from_duty":"z",
+                "remark":"",
+                "appoint":0,
+                "to_id":"",
+                "to_nm":"",
+                "to_date":"",
+                "to_duty":"z"
+            })
+        }
+    },
     ready: function () {
         this.render();
         var d = new Date();

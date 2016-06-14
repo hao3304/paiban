@@ -10,50 +10,6 @@ Vue.use(Router);
 
 
 
-router = new Router();
-var App = Vue.extend({
-    data: function () {
-        return {
-            token:"575fa1c89b4037c30f55b526"
-        }
-    },
-    ready: function () {
-
-    }
-});
-
-
-router.redirect({
-    "/":"/all"
-});
-
-router.map({
-    "/all":{
-        component:require("page/all/all.js") /*全部排班*/
-    },
-    "/verify":{
-        component:require("page/all/verify/verify.js") /*调班审核列表*/
-    },
-    "/detail":{
-        component:require("page/all/detail/detail.js") /*审核页面*/
-    },
-    "/about":{
-        component:require("page/all/about/about.js") /*调班给我*/
-    },
-    "/mine":{
-        component:require("page/mine/mine.js")  /*我的排班*/
-    },
-    "/mine/list":{
-        component:require("page/mine/list.js")  /*我的调班列表*/
-    },
-    "/mine/apply":{
-        component:require("page/mine/apply/apply.js") /*申请调班*/
-    }
-});
-
-router.start(App,'#app');
-
-
 Vue.filter("getWeek", function (w) {
     var d = new Date(w*1000);
     switch (d.getDay()){
@@ -111,3 +67,41 @@ Vue.filter("getState", function (v) {
         }break;
     }
 });
+
+
+router = new Router();
+var App = Vue.extend({
+    data: function () {
+        return {
+            //token:"575fa1c89b4037c30f55b526",
+            token:"575e45026da1e212e48c8ec3"
+        }
+    },
+    ready: function () {
+
+    }
+});
+
+
+router.map({
+    "/verify":{
+        component:require("page/all/verify/verify.js") /*调班审核列表*/
+    },
+    "/detail/:id":{
+        component:require("page/all/detail/detail.js") /*审核页面*/
+    },
+    "/about":{
+        component:require("page/all/about/about.js") /*调班给我*/
+    },
+    "/mine":{
+        component:require("page/mine/mine.js")  /*我的排班*/
+    },
+    "/mine/list":{
+        component:require("page/mine/list.js")  /*我的调班列表*/
+    },
+    "/mine/apply":{
+        component:require("page/mine/apply/apply.js") /*申请调班*/
+    }
+});
+
+router.start(App,'#app');

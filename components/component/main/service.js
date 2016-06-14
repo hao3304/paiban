@@ -7,7 +7,8 @@
  * Created by jack on 16/6/14.
  */
 
-var prefix = "http://localhost:8080";
+//var prefix = "http://localhost:8080";
+var prefix = "";
 
 Date.prototype.Format = function (fmt) { //author: meizz
     var o = {
@@ -78,10 +79,15 @@ function save(p,c){
     $.post(prefix+"/hd/sche/save.json",p,co(c),"json");
 }
 
+function detail(p,c){
+    $.post(prefix +"/hd/sche/detail.json",p,co(c),"json");
+}
+
 module.exports = {
     GetQueryString:GetQueryString,
     dutylist:dutylist,
     myList:myList,
     getInfo:getInfo,
-    save:save
+    save:save,
+    detail:detail
 };

@@ -1,5 +1,97 @@
-<!--  审核  -->
+<!--  申请调班  -->
 
-<div>
-    审核
+<div class="apply">
+    <header class="header-bar header-bar-nav">
+        <a v-link="{path:'/verify'}" style="height: 44px; line-height: 44px;"><i class="iconfont icon-fanhui header-icon"></i></a>
+        <h1 class="header-title">申请调班</h1>
+    </header>
+    <div  class="weui_loading_toast" v-show="loading">
+        <div class="weui_mask_transparent"></div>
+        <div class="weui_toast">
+            <div class="weui_loading">
+                <div class="weui_loading_leaf weui_loading_leaf_0"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_1"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_2"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_3"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_4"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_5"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_6"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_7"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_8"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_9"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_10"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_11"></div>
+            </div>
+            <p class="weui_toast_content">数据加载中</p>
+        </div>
+    </div>
+    <div class="container padder-top">
+        <div class="bd">
+            <div class="weui_cells_title">我的班次</div>
+
+            <div class="weui_cells weui_cells_form">
+                <div class="weui_cell">
+                    <div class="weui_cell_hd"><label class="weui_label">调班人员</label></div>
+                    <div class="weui_cell_bd weui_cell_primary">
+                        <span>{{form.from_nm}}</span>
+                    </div>
+                </div>
+
+                <div class="weui_cell">
+                    <div class="weui_cell_hd"><label class="weui_label">调班时间</label></div>
+                    <div class="weui_cell_bd weui_cell_primary">
+                        <span>{{new Date(form.from_date*1000).Format("yyyy-MM-dd")}}</span>
+                    </div>
+                </div>
+
+                <div class="weui_cell">
+                    <div class="weui_cell_hd"><label class="weui_label">班次</label></div>
+                    <div class="weui_cell_bd weui_cell_primary">
+                        <span>{{form.from_duty|getWork}}</span>
+                    </div>
+                </div>
+
+                <div class="weui_cell">
+                    <div class="weui_cell_hd"><label class="weui_label">调班原因</label></div>
+                    <div class="weui_cell_bd weui_cell_primary">
+                        <span>{{form.remark || "-"}}</span>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="weui_cells_title">被调人班次</div>
+
+            <div class="weui_cells weui_cells_form" v-if="form.appoint == 1">
+                <div class="weui_cell" v-show="form.to_id">
+                    <div class="weui_cell_hd"><label class="weui_label">调班人员</label></div>
+                    <div class="weui_cell_bd weui_cell_primary">
+                        <span>{{form.to_nm}}</span>
+                    </div>
+                </div>
+
+                <div class="weui_cell">
+                    <div class="weui_cell_hd"><label class="weui_label">调班时间</label></div>
+                    <div class="weui_cell_bd weui_cell_primary">
+                        <span>{{new Date(form.to_date*1000).Format("yyyy-MM-dd")}}</span>
+                    </div>
+                </div>
+                <div class="weui_cell">
+                    <div class="weui_cell_hd"><label class="weui_label">班次</label></div>
+                    <div class="weui_cell_bd weui_cell_primary">
+                        <span>{{form.to_duty|getWork}}</span>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="weui_btn_area">
+                <a class="weui_btn weui_btn_primary" href="javascript:" @click="onOk">同意</a>
+                <a href="javascript:;" class="weui_btn weui_btn_warn" @click="onCancel">拒绝</a>
+            </div>
+
+        </div>
+
+    </div>
+
 </div>
