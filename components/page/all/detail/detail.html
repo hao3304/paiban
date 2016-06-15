@@ -70,16 +70,28 @@
                     </div>
                 </div>
 
-                <div class="weui_cell">
-                    <div class="weui_cell_hd"><label class="weui_label">调班时间</label></div>
+
+                <div class="weui_cell weui_cell_select weui_select_after">
+                    <div class="weui_cell_hd">
+                        <label for="" class="weui_label">调班时间</label>
+                    </div>
                     <div class="weui_cell_bd weui_cell_primary">
-                        <span>{{new Date(form.to_date*1000).Format("yyyy-MM-dd")}}</span>
+                        <div class="weui_select" @click="onPickDate('toDate')" >
+                            {{new Date(form.to_date*1000).Format("yyyy-MM-dd")||'选择时间'}}
+                        </div>
                     </div>
                 </div>
-                <div class="weui_cell">
-                    <div class="weui_cell_hd"><label class="weui_label">班次</label></div>
+
+                <div class="weui_cell weui_cell_select weui_select_after">
+                    <div class="weui_cell_hd">
+                        <label class="weui_label">调班班次</label>
+                    </div>
                     <div class="weui_cell_bd weui_cell_primary">
-                        <span>{{form.to_duty|getWork}}</span>
+                        <select class="weui_select" v-model="form.to_duty">
+                            <option value="z">早班</option>
+                            <option value="w">晚班</option>
+                            <option value="y">夜班</option>
+                        </select>
                     </div>
                 </div>
 

@@ -4,6 +4,7 @@
 
 fis.set("path","/static/apps/paiban");
 
+
 fis.hook("module",{
     mode:"mod"
 });

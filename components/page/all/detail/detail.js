@@ -35,8 +35,7 @@ module.exports = Vue.extend({
                 content:"确定通过该调班申请?",
                 btn:["确定","取消"],
                 yes: function () {
-                    layer.closeAll();
-                    self.$router.go("/verify");
+                    self.onSubmit(2);
                 }
             });
         },
@@ -46,16 +45,51 @@ module.exports = Vue.extend({
                 content:"确定拒绝该调班申请?",
                 btn:["确定","取消"],
                 yes: function () {
-                    layer.closeAll();
-                    self.$router.go("/verify");
+                    self.onSubmit(3);
                 }
             });
+        },
+        onSubmit: function (action) {
+            var self = this;
+            Service.save(JSON.stringify({
+                Token:this.$root.token,
+                action:action,
+                data:this.form
+            }), function (rep) {
+
+                layer.open({
+                    content:rep,
+                    shadeClose:false,
+                    btn:["确定"],
+                    yes: function () {
+                        layer.closeAll();
+                        self.$router.go("/verify");
+                    }
+                })
+
+            });
+        },
+        onPickDate: function () {
+            var self = this;
+            this.picker.show(function (date) {
+                self.form.to_date = self.getStamp(date.value);
+            })
+        },
+        getStamp: function (date) {
+            return  Date.parse(new Date(date.replace(/-/g,"/")))/1000;
         }
+    },
+    watch:{
+        
     },
     route:{
         data: function () {
             this.id = this.$route.params.id;
             this.render();
         }
+    },
+    ready: function () {
+        var d = new Date();
+        this.picker = new mui.DtPicker({type:"date",beginYear: d.getFullYear()});
     }
 });

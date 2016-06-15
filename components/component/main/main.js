@@ -4,7 +4,7 @@
 
 var Vue = require("component_modules/vue.js");
 var Router = require("component_modules/vue-router.js");
-
+var Service = require("main/service.js");
 
 Vue.use(Router);
 
@@ -74,11 +74,12 @@ var App = Vue.extend({
     data: function () {
         return {
             //token:"575fa1c89b4037c30f55b526",
-            token:"575e45026da1e212e48c8ec3"
+            //token:"575e45026da1e212e48c8ec3",
+            token:""
         }
     },
     ready: function () {
-
+        this.token = Service.GetQueryString("token");
     }
 });
 

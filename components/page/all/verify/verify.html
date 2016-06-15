@@ -49,7 +49,7 @@
                         </div>
                         <div class="weui_cell_ft">
                             <p>{{new Date(l.changed*1000).Format("hh:mm")}}</p>
-                            <p class="checked">{{l.zt | getState}}</p>
+                            <p class=" mui-badge" :class="{'mui-badge-primary':l.zt==0,'mui-badge-success':l.zt==1,'mui-badge-danger':l.zt==2}">{{l.zt | getState}}</p>
                         </div>
                     </div>
 

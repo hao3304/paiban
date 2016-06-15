@@ -35,6 +35,7 @@ module.exports = Vue.extend({
         }
     },
     ready: function () {
+
         this.render();
     }
 });

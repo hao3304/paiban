@@ -7,7 +7,7 @@
  * Created by jack on 16/6/14.
  */
 
-//var prefix = "http://localhost:8080";
+//var prefix = "http://192.168.100.104:8002";
 var prefix = "";
 
 Date.prototype.Format = function (fmt) { //author: meizz
@@ -28,7 +28,7 @@ Date.prototype.Format = function (fmt) { //author: meizz
 
 function GetQueryString(name) {
     var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)","i");
-    var r = window.location.search.substr(1).match(reg);
+    var r = window.location.hash.split("?")[1].match(reg);
     if (r!=null) return (r[2]); return null;
 }
 
